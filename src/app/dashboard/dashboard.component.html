@@ -1,1 +1,125 @@
-<p>dashboard works!</p>
+<nav class="navbar navbar-light bg-dark ">
+    <a class="navbar-brand  " href="#" style="color:darkcyan"><b>&#169; DELTA BANK </b></a>
+    <br>
+    <!-- <p><b>{{aim}}</b></p> -->
+    <button class="btn btn-warning" (click)="logout()">Logout</button>
+</nav>
+<h1 style="color: white;">Welcome {{user}}</h1>
+<p>Login date(Unformatted):{{ldate}}</p>
+<p>Login date(using pipe):{{ldate | date|uppercase}}</p>
+
+
+
+<a routerLink="/transaction">View Transaction History</a>
+
+
+
+<div [ngClass]="acno? 'c1':'' " class="container col-md-6 mt-0">
+    <div class="d-flex justify-content-center ">
+        <div class="card">
+            <div class="card-header">
+                <h3 appHighlight class="text-center">Deposit Form</h3>
+
+            </div>
+            <div class="card-body">
+                <form [formGroup]="depositform" (ngSubmit)="deposit()">
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="acno" formControlName="acno"
+                            placeholder="account number" id="login_accno" required>
+                        <!-- (change)="acnoChange($event)"  -->
+                    </div>
+                    <div *ngIf="(this.depositform.get('acno')?.touched || this.depositform.get('acno')?.dirty)&& this.depositform.get('acno')?.errors"
+                        id="errors">Invalid Account Number</div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="pswd" formControlName="pswd"
+                            placeholder="password" id="login_password" required>
+                    </div>
+                    <div *ngIf=" (this.depositform.get('pswd')?.touched || this.depositform.get('pswd')?.dirty)&& this.depositform.get('pswd')?.errors"
+                        id="errors">Invalid Password</div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="amount" formControlName="amount"
+                            placeholder="Amount" id="login_amount" required>
+                    </div>
+                    <div *ngIf=" (this.depositform.get('amount')?.touched || this.depositform.get('amount')?.dirty)&& this.depositform.get('amount')?.errors"
+                        id="errors">Invalid Amount</div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Deposit" class="btn float-right login_btn " style="width:50%">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div [ngClass]="acno? 'c1':'' " class="container col-md-6 mt-0">
+    <br class="d-flex justify-content-center ">
+        <div class="card">
+            <div class="card-header">
+                <h3 appHighlight class="text-center">Withdraw Form</h3>
+
+            </div>
+            <div class="card-body">
+                <form [formGroup]="withdrawform" (ngSubmit)="withdraw()">
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="acno" formControlName="acno"
+                            placeholder="account number" id="login_accno" required>
+                        <!-- (change)="acnoChange($event)"  -->
+                    </div>
+                    <div *ngIf="(this.withdrawform.get('acno')?.touched || this.withdrawform.get('acno')?.dirty)&& this.withdrawform.get('acno')?.errors"
+                        id="errors">Invalid Account Number</div>
+
+
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="pswd" formControlName="pswd"
+                            placeholder="password" id="login_password" required>
+                    </div>
+                    <div *ngIf="(this.withdrawform.get('pswd')?.touched || this.withdrawform.get('pswd')?.dirty)&& this.withdrawform.get('pswd')?.errors"
+                        id="errors">Invalid Password</div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="amount" formControlName="amount"
+                            placeholder="amount" id="login_amount" required>
+                    </div>
+                    <div *ngIf="(this.withdrawform.get('amount')?.touched || this.withdrawform.get('amount')?.dirty)&& this.withdrawform.get('amount')?.errors"
+                        id="errors">Invalid Amount</div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Withdraw" class="btn float-right login_btn " style="width:50%">
+                    </div>
+                </form>
+            </div>
+        </div>
+   
+        <br>
+        <!--property binding : [item]="acno" parent to child-input decorator-->
+        <!-- event binding (onDelete)="onDelete($event)" child to parent-output decorator-->
+        <app-deleteconfirmation (onCancel)="onCancel()" (onDelete)="onDelete($event)" [item]="acno"></app-deleteconfirmation>
+        <br>
+        <!--Animation Demo-->
+        <!-- <app-animation></app-animation> -->
+        <button id="b" (click)="deleteFromParent()" class="btn btn-danger">DELETE</button>
+    </div>

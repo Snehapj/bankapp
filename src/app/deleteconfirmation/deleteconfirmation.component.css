@@ -1,0 +1,13 @@
+p{
+    color: black;
+    text-align: center;
+}
+.div1{
+    text-align: center;
+    border: tomato;
+    border-style: dotted;
+    padding: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: thistle;
+}

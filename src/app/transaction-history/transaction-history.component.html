@@ -1,0 +1,17 @@
+<h1>Transaction History</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Amount</th>&nbsp;&nbsp;
+            <th>Type</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let t of transaction">
+            <th>{{t.amount}}</th>&nbsp;
+            <th>{{t.type}}</th>
+        </tr>
+    </tbody>
+</table>
+<a routerLink="/dashboard">Home</a>

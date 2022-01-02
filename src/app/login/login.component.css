@@ -83,3 +83,6 @@ margin-left: 4px;
 p{
     color: white;
 }
+#errors{
+    color: red;
+}

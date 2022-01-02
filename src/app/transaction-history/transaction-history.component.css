@@ -1,0 +1,20 @@
+h1{
+    color: white;
+    top:50px;
+    text-align: center;
+}
+
+table{
+    color: white;
+    border: white;
+    margin-left: 700px;
+    margin-right: 500px;
+    padding: 30px;
+    border-style: dashed;
+    margin-top: 50px;
+}
+
+a{
+    margin-left: 800px;
+}
+
